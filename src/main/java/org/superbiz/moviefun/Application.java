@@ -11,11 +11,16 @@ public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
+//    @Bean
+//    public ServletRegistrationBean getServletRegistrationBean(ActionServlet actionServlet)
+//    {
+//        ServletRegistrationBean registrationBean = new ServletRegistrationBean(actionServlet);
+//        registrationBean.addUrlMappings("/moviefun/*");
+//        return registrationBean;
+//    }
+
     @Bean
-    public ServletRegistrationBean getServletRegistrationBean(ActionServlet actionServlet)
-    {
-        ServletRegistrationBean registrationBean = new ServletRegistrationBean(actionServlet);
-        registrationBean.addUrlMappings("/moviefun/*");
-        return registrationBean;
+    public ServletRegistrationBean servletRegistrationBean(ActionServlet actionServlet){
+        return new ServletRegistrationBean(actionServlet, "/moviefun/*");
     }
 }
